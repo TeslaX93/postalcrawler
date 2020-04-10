@@ -1,2 +1,6 @@
- 3.0. at /var/www/html/postalcrawler/vendor/doctrine/orm/lib/Doctrine/ORM/EntityManager.php:673)"} []
-[2020-02-05T05
+web_profiler:
+    toolbar: true
+    intercept_redirects: false
+
+framework:
+    profiler: { only_exceptions: false }
