@@ -8,7 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class PackageController extends AbstractController
 {
     /**
-     * @Route("/package", name="package")
+     * @Route("/", name="homepage")
      */
     public function index()
     {
