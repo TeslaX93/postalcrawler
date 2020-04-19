@@ -1,20 +1,10 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello PackageController!{% endblock %}
+{% block title %}Hello!{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Users/bartl/Desktop/postalCrawler/pcrawler2/src/Controller/PackageController.php'|file_link(0) }}">src/Controller/PackageController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Users/bartl/Desktop/postalCrawler/pcrawler2/templates/package/index.html.twig'|file_link(0) }}">templates/package/index.html.twig</a></code></li>
-    </ul>
-</div>
+<h1>PostalCrawler</h1>
+<p>Author: <a href="https://github.com/TeslaX93">https://github.com/TeslaX93</a></p>
+<p>With a little help of gist by @Turin86: <a href="https://gist.github.com/Turin86/5569152">https://gist.github.com/Turin86/5569152</a></p>
+<div style="color: {% if (failed) %}red{% else %}green{% endif %};"><h2>{{hello}}</h2></div>
 {% endblock %}

@@ -14,9 +14,6 @@ use Symfony\Component\Console\Helper\ProgressBar;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use App\Entity\Package;
 use App\Model\WSSoapClient;
-use SoapClient;
-
-
 
 
 class PostalCrawlerCommand extends Command
@@ -73,7 +70,7 @@ class PostalCrawlerCommand extends Command
 		
 		
 		$header = ['Username' => 'sledzeniepp', 'Password' => 'PPSA', 'passwordType' => 'PasswordText'];
-		$wsclient = new WSSoapClient("https://tt.poczta-polska.pl/Sledzenie/services/Sledzenie?wsdl",['connection_timeout' => 7200,'cache_wsdl' => WSDL_CACHE_NONE]);
+		$wsclient = new WSSoapClient("https://tt.poczta-polska.pl/Sledzenie/services/Sledzenie?wsdl",['connection_timeout' => 10800,'cache_wsdl' => WSDL_CACHE_NONE]);
 		$wsclient->__setUserNameToken($header['Username'],$header['Password'],$header['passwordType']);
 		$hello = $wsclient->witaj(['imie' => 'użytkowniku, pomyślnie połączyłeś się z PP'])->return;
 		$io->note($hello);
@@ -123,6 +120,12 @@ class PostalCrawlerCommand extends Command
 									 $package->setKodRodzPrzes($przesylka['danePrzesylki']->kodRodzPrzes);
 									 $package->setNumer($przesylka['numer']);
 									 $package->setZakonczonoObsluge($przesylka['danePrzesylki']->zakonczonoObsluge);
+									 if($package->getZakonczonoObsluge) {
+										 foreach($przesylka['danePrzesylki']->zdarzenia->zdarzenie as $zd) {
+											 //get konczace
+											if($zd->konczace) $package->setDataDoreczenia(date_create_from_format("Y-m-d",$zd->czas);
+										 }
+									 }
 									 $package->setMasa($przesylka['danePrzesylki']->masa);
 									 $package->setFormat($przesylka['danePrzesylki']->format);
 									 $package->setUpdatedAt(new \DateTime());

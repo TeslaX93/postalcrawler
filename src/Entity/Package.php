@@ -61,6 +61,11 @@ class Package
      */
     private $updatedAt;
 
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $dataDoreczenia;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -170,6 +175,18 @@ class Package
     public function setUpdatedAt(\DateTimeInterface $updatedAt): self
     {
         $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    public function getDataDoreczenia(): ?\DateTimeInterface
+    {
+        return $this->dataDoreczenia;
+    }
+
+    public function setDataDoreczenia(?\DateTimeInterface $dataDoreczenia): self
+    {
+        $this->dataDoreczenia = $dataDoreczenia;
 
         return $this;
     }
