@@ -123,7 +123,7 @@ class PostalCrawlerCommand extends Command
 									 if($package->getZakonczonoObsluge) {
 										 foreach($przesylka['danePrzesylki']->zdarzenia->zdarzenie as $zd) {
 											 //get konczace
-											if($zd->konczace) $package->setDataDoreczenia(date_create_from_format("Y-m-d",$zd->czas);
+											if($zd->konczace) $package->setDataDoreczenia(date_create_from_format("Y-m-d",$zd->czas));
 										 }
 									 }
 									 $package->setMasa($przesylka['danePrzesylki']->masa);
