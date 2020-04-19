@@ -13,5 +13,4 @@
 .phpunit
 .phpunit.result.cache
 /phpunit.xml
-/phpunit.dist
 ###< symfony/phpunit-bridge ###
